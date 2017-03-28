@@ -6,14 +6,27 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <script src="public/angular/angular.min.js" charset="utf-8"></script>
   <script src="public/app.js" charset="utf-8"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
+  <link rel="stylesheet" href="style.css">
   <title>Angular Phonebook</title>
 </head>
 <body ng-controller="HomeCtrl">
-  <h1>{{title}}</h1>
-  <input type="text" ng-model="search.first">
-  <p ng-if="search">You searched for: {{search}}</p>
-  <ul>
-    <li ng-repeat="user in users | filter:{name:search}">{{user.name.first}} {{user.name.last}}</li>
+  <header>
+    <div class="container">
+      <h1>{{title}}</h1>
+    </div>
+  </header>
+  <div class="container">
+  <input type="text" placeholder="Who are you looking for?"ng-model="search.first">
+  <p ng-if="search">You searched for: {{search.first}}</p>
+  <ul class="people">
+    <li ng-repeat="user in users | filter:{name:search}">
+      <div class="picture">
+        <img src="{{user.picture.large}}" alt="{{user.name.first}} {{user.name.last}}">
+      </div>
+      <p>{{user.name.first}} {{user.name.last}}</p>
+      </li>
   </ul>
+  </div>
 </body>
 </html>

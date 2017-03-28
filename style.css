@@ -1,0 +1,43 @@
+body{
+  background-color: #ececec;
+  font-family: 'Open Sans';
+  padding: 0;
+  margin: 0;
+}
+
+.container{
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+header{
+  background-color: #954945;
+  padding: 10px 0;
+  color: #fff;
+
+}
+input[type="text"]{
+  margin-top: 20px;
+  width: 100%;
+  border: none;
+  font-size: 1.5em;
+  padding: 20px;
+}
+
+.people{
+  list-style-type: none;
+  padding: 0;
+}
+
+.people li{
+  display: inline-block;
+  vertical-align: top;
+  width: 25%;
+  text-align: center;
+}
+
+.people li .picture img{
+  border-radius: 50%;
+  border: 4px solid #fff;
+  box-shadow: 0 0 8px 4px rgba(0,0,0,0.2);
+}
