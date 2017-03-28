@@ -10,5 +10,10 @@
 </head>
 <body ng-controller="HomeCtrl">
   <h1>{{title}}</h1>
+  <input type="text" ng-model="search.first">
+  <p ng-if="search">You searched for: {{search}}</p>
+  <ul>
+    <li ng-repeat="user in users | filter:{name:search}">{{user.name.first}} {{user.name.last}}</li>
+  </ul>
 </body>
 </html>
