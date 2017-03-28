@@ -10,3 +10,11 @@ app.controller('HomeCtrl', ['$scope', '$http', function($scope, $http){
     $scope.users = response.data.results;
   });
 }]);
+
+app.filter('capitalise', function(){
+  return function(input){
+    return input.split(' ').map(function(word){
+      return word[0].toUpperCase() + word.slice(1).toLowerCase();
+    }).join(' ');
+  }
+});

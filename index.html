@@ -24,7 +24,7 @@
       <div class="picture">
         <img src="{{user.picture.large}}" alt="{{user.name.first}} {{user.name.last}}">
       </div>
-      <p>{{user.name.first}} {{user.name.last}}</p>
+      <p>{{user.name.first | capitalise}} {{user.name.last | capitalise}}</p>
       </li>
   </ul>
   </div>
