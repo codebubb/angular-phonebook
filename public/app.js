@@ -36,9 +36,10 @@ app.directive('modalPop', function($interpolate){
 app.controller('HomeCtrl', ['$scope', '$http', function($scope, $http){
   $scope.title = "Angular Phonebook";
 
-  $scope.modalPopup = function(user_number){
-    $scope.currentUser = $scope.users[user_number];
+  $scope.modalPopup = function(user){
+    $scope.currentUser = user
     console.log($scope.currentUser);
+    document.querySelector('.overlay').style.height = window.getComputedStyle(document.querySelector('body')).height;
     document.querySelector('.user-info').style.display = 'block';
     document.querySelector('.overlay').style.display = 'block';
       setTimeout(function(){

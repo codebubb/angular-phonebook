@@ -19,9 +19,9 @@
   </header>
   <div class="container">
   <input type="text" placeholder="Who are you looking for?" ng-model="search.first">
-  <p ng-if="search">You searched for: {{search.first}}</p>
+  <p ng-if="search.first">You searched for: {{search.first}}</p>
   <ul class="people">
-    <li  ng-repeat="user in users | filter:{name:search}" ng-click="modalPopup($index);" >
+    <li  ng-repeat="user in users | filter:{name:search}" ng-click="modalPopup(user);" >
         <div class="picture">
         <img src="{{user.picture.large}}" alt="{{user.name.first}} {{user.name.last}}">
       </div>
@@ -47,15 +47,15 @@
       </tr>
       <tr>
         <td>Street:</td>
-        <td>{{currentUser.location.street}}</td>
+        <td>{{currentUser.location.street | capitalise}}</td>
       </tr>
       <tr>
         <td>City:</td>
-        <td>{{currentUser.location.city}}</td>
+        <td>{{currentUser.location.city | capitalise}}</td>
       </tr>
       <tr>
         <td>State:</td>
-        <td>{{currentUser.location.state}}</td>
+        <td>{{currentUser.location.state | capitalise}}</td>
       </tr>
       <tr>
         <td>Postcode:</td>
@@ -68,14 +68,7 @@
     </div>
   </div>
   <script>
-  function modalPopup(){
-    alert('pop');
-  }
     window.onload = function(){
-      function modalPopup(){
-        alert('pop');
-      }
-
       document.querySelector('.close').addEventListener('click', function(){
         document.querySelector('.user-info').style.opacity = 0;
         document.querySelector('.overlay').style.opacity = 0;
@@ -84,12 +77,6 @@
           document.querySelector('.overlay').style.display = 'none';
         }, 500);
     });
-    // Array.prototype.slice.call(document.querySelectorAll('.people li a'))
-    // .forEach(function(person){
-    //   person.addEventListener('click', function(e){
-    //     console.log(e);
-    //   });
-    // });
   }
   </script>
 </body>
