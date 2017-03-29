@@ -26,7 +26,7 @@ body{
 }
 a{
   text-decoration: none;
-  color: #4f4f4f;
+  color: #e0dede;
 }
 
 /* Header and search box */
@@ -116,16 +116,32 @@ input[type="text"]{
   margin-top: 25px;
 }
 
+/* footer */
+footer{
+  background-color: #954945;
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+}
+
 /* Responsive break-points */
 @media only screen and (max-width: 320px){
   .people li{
     width: 100%;
     display: block;
   }
+  header img{
+    width: 30px;
+    height: 30px;
+  }
 }
 @media only screen and (min-width: 320px) and (max-width: 480px){
   .people li{
     width: 50%;
+  }
+  header img{
+    width: 40px;
+    height: 40px;
   }
 }
 @media only screen and (min-width: 480px) and (max-width: 680px){
