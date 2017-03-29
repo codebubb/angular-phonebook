@@ -11,6 +11,7 @@
   <title>Angular Phonebook</title>
 </head>
 <body ng-controller="HomeCtrl">
+  <div class="overlay"></div>
   <header>
     <div class="container">
       <h1>{{title}}</h1>
@@ -30,11 +31,38 @@
   </ul>
 
   </div>
-  <div class="user-info">
+  <div ng-show="currentUser" class="user-info">
     <div class="user-title">
       <img src="{{currentUser.picture.large}}" alt="">
-      <h2>{{currentUser.name.first }} {{currentUser.name.last}}</h2>
+      <h2>{{currentUser.name.first | capitalise}} {{currentUser.name.last | capitalise}}</h2>
     </div>
+    <table class="user-contact">
+      <tr>
+        <td>Phone Number:</td>
+        <td>{{currentUser.phone}}</td>
+      </tr>
+      <tr>
+        <td>Email:</td>
+        <td>{{currentUser.email}}</td>
+      </tr>
+      <tr>
+        <td>Street:</td>
+        <td>{{currentUser.location.street}}</td>
+      </tr>
+      <tr>
+        <td>City:</td>
+        <td>{{currentUser.location.city}}</td>
+      </tr>
+      <tr>
+        <td>State:</td>
+        <td>{{currentUser.location.state}}</td>
+      </tr>
+      <tr>
+        <td>Postcode:</td>
+        <td>{{currentUser.location.postcode}}</td>
+      </tr>
+
+    </table>
     <div class="close">
       <span><a href="#">X</a></span>
     </div>
@@ -50,8 +78,10 @@
 
       document.querySelector('.close').addEventListener('click', function(){
         document.querySelector('.user-info').style.opacity = 0;
+        document.querySelector('.overlay').style.opacity = 0;
         setTimeout(function(){
           document.querySelector('.user-info').style.display = 'none';
+          document.querySelector('.overlay').style.display = 'none';
         }, 500);
     });
     // Array.prototype.slice.call(document.querySelectorAll('.people li a'))

@@ -8,6 +8,17 @@ body{
   margin: 0;
 }
 
+.overlay{
+  display: none;
+  transition: opacity .4s ease;
+  opacity: 0;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: #000;
+}
+
 .container{
   max-width: 960px;
   margin: 0 auto;
@@ -56,13 +67,13 @@ input[type="text"]{
   opacity: 0;
   border-radius: 6px;
   width: 95%;
-  height: 95%;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 50px;
   transition: opacity .6s ease;
+  z-index: 4;
 }
 
 .user-info .close{
@@ -80,4 +91,9 @@ input[type="text"]{
   display: inline-block;
   margin-right: 50px;
   vertical-align: middle;
+}
+
+.user-info .user-contact{
+  width: 100%;
+  margin-top: 25px;
 }

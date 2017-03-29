@@ -35,13 +35,15 @@ app.directive('modalPop', function($interpolate){
 
 app.controller('HomeCtrl', ['$scope', '$http', function($scope, $http){
   $scope.title = "Angular Phonebook";
-  $scope.currentUser = {name: {first: "james"}};
 
   $scope.modalPopup = function(user_number){
     $scope.currentUser = $scope.users[user_number];
+    console.log($scope.currentUser);
     document.querySelector('.user-info').style.display = 'block';
+    document.querySelector('.overlay').style.display = 'block';
       setTimeout(function(){
         document.querySelector('.user-info').style.opacity = 1;
+        document.querySelector('.overlay').style.opacity = .6;
       }, 50);
   }
 
@@ -55,8 +57,12 @@ app.controller('HomeCtrl', ['$scope', '$http', function($scope, $http){
 
 app.filter('capitalise', function(){
   return function(input){
-    return input.split(' ').map(function(word){
-      return word[0].toUpperCase() + word.slice(1).toLowerCase();
-    }).join(' ');
+    if(input){
+      return input.split(' ').map(function(word){
+        return word[0].toUpperCase() + word.slice(1).toLowerCase();
+      }).join(' ');
+    } else{
+      return '';
+    }
   }
 });
