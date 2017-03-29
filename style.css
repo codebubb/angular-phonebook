@@ -24,17 +24,24 @@ body{
   margin: 0 auto;
   position: relative;
 }
-
-header{
-  background-color: #954945;
-  padding: 10px 0;
-  color: #fff;
-
-}
 a{
   text-decoration: none;
   color: #4f4f4f;
 }
+
+/* Header and search box */
+header{
+  background-color: #954945;
+  padding: 10px 0;
+  color: #fff;
+}
+header h1, header img{
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 15px;
+}
+
+
 input[type="text"]{
   margin-top: 20px;
   width: 100%;
