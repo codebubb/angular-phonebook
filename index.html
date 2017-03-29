@@ -17,46 +17,49 @@
     </div>
   </header>
   <div class="container">
-  <input type="text" placeholder="Who are you looking for?"ng-model="search.first">
+  <input type="text" placeholder="Who are you looking for?" ng-model="search.first">
   <p ng-if="search">You searched for: {{search.first}}</p>
   <ul class="people">
-    <li ng-repeat="user in users | filter:{name:search}">
-      <a href="#" data-user="user">
+    <li  ng-repeat="user in users | filter:{name:search}" ng-click="modalPopup($index);" >
         <div class="picture">
         <img src="{{user.picture.large}}" alt="{{user.name.first}} {{user.name.last}}">
       </div>
       <p>{{user.name.first | capitalise}} {{user.name.last | capitalise}}</p>
-      </a>
+
       </li>
   </ul>
 
   </div>
   <div class="user-info">
     <div class="user-title">
-      <img src="{{users[0].picture.large}}" alt="">
-      <h2>{{users[0].name.first | capitalise}} {{users[0].name.last | capitalise}}</h2>
-      <table>
-        <tr>
-          <td>Username:</td>
-          <td>{{users[0].login.username}}</td>
-        </tr>
-      </table>
+      <img src="{{currentUser.picture.large}}" alt="">
+      <h2>{{currentUser.name.first }} {{currentUser.name.last}}</h2>
     </div>
     <div class="close">
       <span><a href="#">X</a></span>
     </div>
   </div>
   <script>
+  function modalPopup(){
+    alert('pop');
+  }
     window.onload = function(){
+      function modalPopup(){
+        alert('pop');
+      }
+
       document.querySelector('.close').addEventListener('click', function(){
-      document.querySelector('.user-info').style.opacity = 0;
+        document.querySelector('.user-info').style.opacity = 0;
+        setTimeout(function(){
+          document.querySelector('.user-info').style.display = 'none';
+        }, 500);
     });
-    Array.prototype.slice.call(document.querySelectorAll('.people li a'))
-    .forEach(function(person){
-      person.addEventListener('click', function(e){
-        console.log(e);
-      });
-    });
+    // Array.prototype.slice.call(document.querySelectorAll('.people li a'))
+    // .forEach(function(person){
+    //   person.addEventListener('click', function(e){
+    //     console.log(e);
+    //   });
+    // });
   }
   </script>
 </body>
