@@ -19,64 +19,63 @@
     </div>
   </header>
   <div class="container">
-  <input type="text" placeholder="Who are you looking for?" ng-model="search.first">
-  <p ng-if="search.first">You searched for: {{search.first}}</p>
-  <ul class="people">
-    <li  ng-repeat="user in users | filter:{name:search}" ng-click="modalPopup(user);" >
+    <input type="text" placeholder="Who are you looking for?" ng-model="search.first">
+    <p ng-if="search.first">You searched for: {{search.first}}</p>
+    <ul class="people">
+      <li  ng-repeat="user in users | filter:{name:search}" ng-click="modalPopup(user);" >
         <div class="picture">
-        <img src="{{user.picture.large}}" alt="{{user.name.first}} {{user.name.last}}">
-      </div>
-      <p>{{user.name.first | capitalise}} {{user.name.last | capitalise}}</p>
+          <img src="{{user.picture.large}}" alt="{{user.name.first}} {{user.name.last}}">
+        </div>
+        <p>{{user.name.first | capitalise}} {{user.name.last | capitalise}}</p>
 
       </li>
-  </ul>
+    </ul>
+    <div ng-show="currentUser" class="user-info">
+      <div class="user-title">
+        <img src="{{currentUser.picture.large}}" alt="">
+        <h2>{{currentUser.name.first | capitalise}} {{currentUser.name.last | capitalise}}</h2>
+      </div>
+      <table class="user-contact">
+        <tr>
+          <td>Phone Number:</td>
+          <td>{{currentUser.phone}}</td>
+        </tr>
+        <tr>
+          <td>Email:</td>
+          <td>{{currentUser.email}}</td>
+        </tr>
+        <tr>
+          <td>Street:</td>
+          <td>{{currentUser.location.street | capitalise}}</td>
+        </tr>
+        <tr>
+          <td>City:</td>
+          <td>{{currentUser.location.city | capitalise}}</td>
+        </tr>
+        <tr>
+          <td>State:</td>
+          <td>{{currentUser.location.state | capitalise}}</td>
+        </tr>
+        <tr>
+          <td>Postcode:</td>
+          <td>{{currentUser.location.postcode}}</td>
+        </tr>
 
-  </div>
-  <div ng-show="currentUser" class="user-info">
-    <div class="user-title">
-      <img src="{{currentUser.picture.large}}" alt="">
-      <h2>{{currentUser.name.first | capitalise}} {{currentUser.name.last | capitalise}}</h2>
-    </div>
-    <table class="user-contact">
-      <tr>
-        <td>Phone Number:</td>
-        <td>{{currentUser.phone}}</td>
-      </tr>
-      <tr>
-        <td>Email:</td>
-        <td>{{currentUser.email}}</td>
-      </tr>
-      <tr>
-        <td>Street:</td>
-        <td>{{currentUser.location.street | capitalise}}</td>
-      </tr>
-      <tr>
-        <td>City:</td>
-        <td>{{currentUser.location.city | capitalise}}</td>
-      </tr>
-      <tr>
-        <td>State:</td>
-        <td>{{currentUser.location.state | capitalise}}</td>
-      </tr>
-      <tr>
-        <td>Postcode:</td>
-        <td>{{currentUser.location.postcode}}</td>
-      </tr>
-
-    </table>
-    <div class="close">
-      <span><a href="#">X</a></span>
+      </table>
+      <div class="close">
+        <span><a href="#">X</a></span>
+      </div>
     </div>
   </div>
   <script>
-    window.onload = function(){
-      document.querySelector('.close').addEventListener('click', function(){
-        document.querySelector('.user-info').style.opacity = 0;
-        document.querySelector('.overlay').style.opacity = 0;
-        setTimeout(function(){
-          document.querySelector('.user-info').style.display = 'none';
-          document.querySelector('.overlay').style.display = 'none';
-        }, 500);
+  window.onload = function(){
+    document.querySelector('.close').addEventListener('click', function(){
+      document.querySelector('.user-info').style.opacity = 0;
+      document.querySelector('.overlay').style.opacity = 0;
+      setTimeout(function(){
+        document.querySelector('.user-info').style.display = 'none';
+        document.querySelector('.overlay').style.display = 'none';
+      }, 500);
     });
   }
   </script>
